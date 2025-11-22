@@ -27,6 +27,6 @@ export default tseslint.config(
     },
   },
   {
-    ignores: ['dist', 'node_modules', 'rollup.config.js'],
+    ignores: ['dist', 'node_modules', 'rollup.config.mjs'],
   }
 );

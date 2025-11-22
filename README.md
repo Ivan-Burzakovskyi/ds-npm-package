@@ -5,13 +5,13 @@ A reusable Design System NPM package containing React components with TypeScript
 ## Installation
 
 ```bash
-npm install ds-npm-package
+npm install @ivanburzakovskyi/ds-npm-package
 ```
 
 or
 
 ```bash
-yarn add ds-npm-package
+yarn add @ivanburzakovskyi/ds-npm-package
 ```
 
 ## Components
@@ -32,7 +32,7 @@ A customizable button component with multiple variants and sizes.
 #### Usage
 
 ```tsx
-import { Button } from 'ds-npm-package';
+import { Button } from '@ivanburzakovskyi/ds-npm-package';
 
 function App() {
   return (
@@ -68,7 +68,7 @@ A customizable input component with label, helper text, and error states.
 #### Usage
 
 ```tsx
-import { Input } from 'ds-npm-package';
+import { Input } from '@ivanburzakovskyi/ds-npm-package';
 import { useState } from 'react';
 
 function App() {
@@ -106,6 +106,14 @@ function App() {
 ```bash
 npm install
 ```
+
+### Run the local component showcase
+
+```bash
+npm run dev
+```
+
+This starts a Vite dev server at `http://localhost:5173` that renders every component defined in `src/dev/App.tsx`. Update that file to tweak the examples while iterating on new components.
 
 ### Build
 
