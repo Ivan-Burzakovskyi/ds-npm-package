@@ -1,0 +1,13 @@
+src
+.gitignore
+.eslintrc.json
+eslint.config.js
+.prettierrc
+tsconfig.json
+rollup.config.js
+node_modules
+*.log
+.DS_Store
+coverage
+.vscode
+.idea
