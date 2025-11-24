@@ -22,7 +22,7 @@ A customizable button component with multiple variants and sizes.
 
 #### Props
 
-- `label` (string, required): Button text
+- `text` (string, required): Button text
 - `variant` ('primary' | 'secondary' | 'outline', default: 'primary'): Button style variant
 - `size` ('small' | 'medium' | 'large', default: 'medium'): Button size
 - `disabled` (boolean, default: false): Disabled state
@@ -37,12 +37,12 @@ import { Button } from '@ivanburzakovskyi/ds-npm-package';
 function App() {
   return (
     <>
-      <Button label="Primary Button" variant="primary" />
-      <Button label="Secondary Button" variant="secondary" />
-      <Button label="Outline Button" variant="outline" />
-      <Button label="Small Button" size="small" />
-      <Button label="Large Button" size="large" />
-      <Button label="Disabled Button" disabled />
+      <Button text="Primary Button" variant="primary" />
+      <Button text="Secondary Button" variant="secondary" />
+      <Button text="Outline Button" variant="outline" />
+      <Button text="Small Button" size="small" />
+      <Button text="Large Button" size="large" />
+      <Button text="Disabled Button" disabled />
     </>
   );
 }

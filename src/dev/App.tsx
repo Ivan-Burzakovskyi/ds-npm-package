@@ -104,7 +104,7 @@ const App: React.FC = () => {
                     {buttonDescriptions[variant]}
                   </p>
                   <Button
-                    label={`${variant} ${size}`}
+                    text={`${variant} ${size}`}
                     variant={variant}
                     size={size}
                   />
@@ -117,7 +117,7 @@ const App: React.FC = () => {
             <p className="ds-gallery__description">
               Demonstrates the disabled appearance.
             </p>
-            <Button label="Disabled" disabled />
+            <Button text="Disabled" disabled />
           </article>
         </div>
       </section>

@@ -3,9 +3,9 @@ import './Button.css';
 
 export interface ButtonProps {
   /**
-   * Button label
+   * Button text
    */
-  label: string;
+  text: string;
   /**
    * Button variant
    */
@@ -32,7 +32,7 @@ export interface ButtonProps {
  * Button component for user interactions
  */
 export const Button: React.FC<ButtonProps> = ({
-  label,
+  text,
   variant = 'primary',
   size = 'medium',
   disabled = false,
@@ -50,7 +50,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button className={classes} onClick={onClick} disabled={disabled}>
-      {label}
+      {text}
     </button>
   );
 };
