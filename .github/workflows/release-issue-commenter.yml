@@ -1,0 +1,64 @@
+name: Comment on issues linked from release changelog
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  annotate-issues:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify linked issues
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GH_TOKEN }}
+          script: |
+            const release = context.payload.release;
+            if (!release) {
+              core.warning('No release information found in event payload.');
+              return;
+            }
+
+            const body = release.body || '';
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const issueNumbers = new Set();
+
+            const issueUrlRegex = new RegExp(`https://github\\.com/${owner}/${repo}/issues/(\\d+)`, 'gi');
+            let match;
+            while ((match = issueUrlRegex.exec(body)) !== null) {
+              issueNumbers.add(Number(match[1]));
+            }
+
+            const shortRefRegex = /(?<![A-Za-z0-9])#(\d+)/g;
+            while ((match = shortRefRegex.exec(body)) !== null) {
+              issueNumbers.add(Number(match[1]));
+            }
+
+            if (issueNumbers.size === 0) {
+              core.info('No issue references discovered in the release changelog.');
+              return;
+            }
+
+            const publishedAt = release.published_at || release.created_at || new Date().toISOString();
+            const releaseDate = new Date(publishedAt);
+            const formattedDate = new Intl.DateTimeFormat('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            }).format(releaseDate);
+            const commentText = `The work associated with this ticket was release in ${release.tag_name} on ${formattedDate}`;
+
+            for (const issueNumber of issueNumbers) {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: issueNumber,
+                body: commentText
+              });
+              core.info(`Commented on issue #${issueNumber}`);
+            }
