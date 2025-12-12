@@ -51,7 +51,7 @@ jobs:
               month: 'long',
               day: 'numeric'
             }).format(releaseDate);
-            const commentText = `The work associated with this ticket was release in ${release.tag_name} on ${formattedDate}`;
+            const commentText = `The work associated with this ticket was released in ${release.tag_name} on ${formattedDate}`;
 
             for (const issueNumber of issueNumbers) {
               await github.rest.issues.createComment({
